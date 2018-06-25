@@ -2,16 +2,16 @@
 
 		$("#product li").draggable({
 		
-			// возвращение товара
+			// РІРѕР·РІСЂР°С‰РµРЅРёРµ С‚РѕРІР°СЂР°
 			revert:true,
 		
-			// добавление прозрачности во время перетаскивания
+			// РґРѕР±Р°РІР»РµРЅРёРµ РїСЂРѕР·СЂР°С‡РЅРѕСЃС‚Рё РІРѕ РІСЂРµРјСЏ РїРµСЂРµС‚Р°СЃРєРёРІР°РЅРёСЏ
 			drag:function () {
 				$(this).addClass("active");
 				$(this).closest("#product").addClass("active");
 			},
 		
-			// удаление css после драга
+			// СѓРґР°Р»РµРЅРёРµ css РїРѕСЃР»Рµ РґСЂР°РіР°
 			stop:function () {
 				$(this).removeClass("active").closest("#product").removeClass("active");
 			}
@@ -23,7 +23,7 @@
 		
 			hoverClass:"hover",
 		
-			// определение режима сбрасывания товара
+			// РѕРїСЂРµРґРµР»РµРЅРёРµ СЂРµР¶РёРјР° СЃР±СЂР°СЃС‹РІР°РЅРёСЏ С‚РѕРІР°СЂР°
 			tolerance:"touch",
 			drop:function (event, ui) {
 		
@@ -31,21 +31,21 @@
 						move = ui.draggable,
 						itemId = basket.find("ul li[data-id='" + move.attr("data-id") + "']");
 		
-				// +1 если уже существует в корзине
+				// +1 РµСЃР»Рё СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РІ РєРѕСЂР·РёРЅРµ
 				if (itemId.html() != null) {
 					itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
 				}
 				else {
-					// Иначе добавляем товар в корзину
+					// РРЅР°С‡Рµ РґРѕР±Р°РІР»СЏРµРј С‚РѕРІР°СЂ РІ РєРѕСЂР·РёРЅСѓ
 					addBasket(basket, move);
 		
-					// И добавляем количество
+					// Р РґРѕР±Р°РІР»СЏРµРј РєРѕР»РёС‡РµСЃС‚РІРѕ
 					move.find("input").val(parseInt(move.find("input").val()) + 1);
 				}
 			}
 		});
 
-        // добавление нового элемента списка
+        // РґРѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР°
         function addBasket(basket, move) {
 			basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
 					+ '<span class="name">' + move.find("h3").html() + '</span>'
@@ -54,7 +54,7 @@
 		}
 
 
-        // Функция удаления товара
+        // Р¤СѓРЅРєС†РёСЏ СѓРґР°Р»РµРЅРёСЏ С‚РѕРІР°СЂР°
         $(".basket ul li button.delete").live("click", function () {
 			$(this).closest("li").remove();
 		});
